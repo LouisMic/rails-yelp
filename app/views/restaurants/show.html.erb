@@ -1,0 +1,17 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.address %></h3>
+  <h3><%= @restaurant.phone_number %></h3>
+  <p>Category: <%= @restaurant.category %></p>
+</div>
+<div class="container mt-5 d-flex justify-content-evenly">
+  <%= link_to "Restaurant reviews", restaurant_reviews_path(@restaurant) %>
+  <%= link_to "Back to restaurant list", restaurants_path() %>
+</div>
+<div class="container mt-5">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :rating, collection: 0..5 %>
+    <%= f.input :content, as: :text %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
